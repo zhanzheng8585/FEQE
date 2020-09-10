@@ -7,7 +7,8 @@ import os
 import imageio
 import pdb
 import tensorlayer as tl
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from model import *
 from utils import *
 
