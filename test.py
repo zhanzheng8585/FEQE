@@ -7,7 +7,7 @@ import os
 import imageio
 import pdb
 import tensorlayer as tl
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 from model import *
 from utils import *
 
