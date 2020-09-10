@@ -8,9 +8,10 @@ import imageio
 import pdb
 import tensorlayer as tl
 import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from model import *
 from utils import *
-tf.disable_v2_behavior()
+
 
 parser = argparse.ArgumentParser(description="")
 parser.add_argument("--model_path", type=str, default="checkpoint/FEQE/model.ckpt", help="model path")
