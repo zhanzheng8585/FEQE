@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from tensorlayer.layers.core import Layer
 from tensorlayer.decorators import private_method
 
