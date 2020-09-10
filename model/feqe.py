@@ -188,28 +188,28 @@ def FEQE(t_bicubic, opt):
     scale       = opt['scale']
 
     with tf.variable_scope('Generator') as vs:
-        print(t_bicubic.size())
+        print(t_bicubic.shape.as_list())
         x = InputLayer(t_bicubic, name='in')
-        print(x.size())
+        print(x.shape.as_list())
         x = NormalizeLayer(x, 0.5, 255)
-        print(x.size())
+        print(x.shape.as_list())
         g_skip = x
-        print(x.size())
+        print(x.shape.as_list())
         #===========Downsample==============
         x = downsample(x, n_feats, scale, conv_type, downsample_type)
-        print(x.size())
+        print(x.shape.as_list())
         #============Residual=================
         x = body(x, n_feats, n_groups, n_blocks, n_convs, n_squeezes, body_type, conv_type)
-        print(x.size())
+        print(x.shape.as_list())
         #=============Upsample==================
         x = upsample(x, n_feats, scale, conv_type, upsample_type)
-        print(x.size())
+        print(x.shape.as_list())
         x = ElementwiseLayer([x, g_skip], tf.add, name='add_global_res')
-        print(x.size())
+        print(x.shape.as_list())
         x = RestoreLayer(x, 0.5, 255)
-        print(x.size())
+        print(x.shape.as_list())
         outputs = tf.clip_by_value(x.outputs, 0, 1)
-        print(x.size())
+        print(x.shape.as_list())
 
         return outputs
 
